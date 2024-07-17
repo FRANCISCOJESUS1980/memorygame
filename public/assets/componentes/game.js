@@ -23,6 +23,7 @@ export const setupGame = () => {
   arrayCartas.sort(() => Math.random() - Math.random())
 
   const divApp = document.querySelector('#app')
+  const scoreContainer = document.querySelector('#score-container')
 
   const puntuacionHTML = document.createElement('h3')
   puntuacionHTML.textContent = `Puntuación: ${puntuacion}`
@@ -33,7 +34,7 @@ export const setupGame = () => {
     localStorage.getItem('mejorPuntuacion')
   ) || { puntuacion: 0, usuario: '' }
   mejorPuntuacionHTML.textContent = `Mejor puntuación: ${mejorPuntuacion.puntuacion} por ${mejorPuntuacion.usuario}`
-  document.body.append(mejorPuntuacionHTML)
+  scoreContainer.append(mejorPuntuacionHTML)
 
   const mostrarMensajeFinal = () => {
     if (puntuacion > mejorPuntuacion.puntuacion) {
