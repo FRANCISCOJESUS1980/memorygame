@@ -85,3 +85,49 @@ h4 {
     height: 120px;
   }
 }
+
+input[type='text'] {
+  width: 80%;
+  padding: 10px 15px;
+  margin: 20px auto;
+  display: block;
+  border: 2px solid #ddd;
+  border-radius: 25px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+input[type='text']:focus {
+  outline: none;
+  border-color: #7b92a4;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+button {
+  display: block;
+  width: 50%;
+  margin: 10px auto;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 25px;
+  background-color: #7b92a4;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+button:hover {
+  background-color: #5a6d7a;
+  transform: scale(1.05);
+}
+
+button:focus {
+  outline: none;
+}
+
+button:active {
+  background-color: #4a5c66;
+}

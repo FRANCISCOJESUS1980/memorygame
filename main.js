@@ -19,102 +19,168 @@ let carta2
 let puntuacion = 0
 let parejasEncontradas = 0
 
-arrayCartas.sort(() => Math.random() - Math.random())
+const pedirNombreDeUsuario = () => {
+  const overlay = document.createElement('div')
+  overlay.style.position = 'fixed'
+  overlay.style.top = '0'
+  overlay.style.left = '0'
+  overlay.style.width = '100%'
+  overlay.style.height = '100%'
+  overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.5)'
+  overlay.style.display = 'flex'
+  overlay.style.justifyContent = 'center'
+  overlay.style.alignItems = 'center'
+  overlay.style.zIndex = '1000'
 
-const divApp = document.querySelector('#app')
+  const inputContainer = document.createElement('div')
+  inputContainer.style.backgroundColor = 'white'
+  inputContainer.style.padding = '20px'
+  inputContainer.style.borderRadius = '25px'
+  inputContainer.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.1)'
+  inputContainer.style.textAlign = 'center'
 
-const puntuacionHTML = document.createElement('h3')
-puntuacionHTML.textContent = `Puntuación: ` + puntuacion
+  const input = document.createElement('input')
+  input.type = 'text'
+  input.placeholder = 'Introduce tu nombre de usuario'
+  inputContainer.appendChild(input)
 
-document.body.append(puntuacionHTML, divApp)
-
-const mostrarMensajeFinal = () => {
-  const mensajeFinal = document.createElement('div')
-  mensajeFinal.className = 'mensaje-final'
-
-  const mensaje = document.createElement('h2')
-  mensaje.textContent = `¡Juego terminado! Puntuación final: ${puntuacion}`
-
-  const botonReiniciar = document.createElement('button')
-  botonReiniciar.textContent = 'Empezar de nuevo'
-  botonReiniciar.addEventListener('click', () => {
-    window.location.reload()
+  const button = document.createElement('button')
+  button.textContent = 'Enviar'
+  button.addEventListener('click', () => {
+    const usuario = input.value
+    if (usuario) {
+      localStorage.setItem('usuario', usuario)
+      document.body.removeChild(overlay)
+      iniciarJuego()
+    } else {
+      alert('Por favor, introduce un nombre de usuario válido.')
+    }
   })
+  inputContainer.appendChild(button)
 
-  mensajeFinal.append(mensaje, botonReiniciar)
-  document.body.append(mensajeFinal)
+  overlay.appendChild(inputContainer)
+  document.body.appendChild(overlay)
 }
 
-const resetearValores = () => {
-  contador = 0
-  carta1 = undefined
-  carta2 = undefined
-  console.log(puntuacion)
-}
+const iniciarJuego = () => {
+  const usuario = localStorage.getItem('usuario')
 
-const resetearCarta = (cartaGenerica) => {
-  cartaGenerica.nodoHTML.style.backgroundColor = '#f5b6e4'
-  cartaGenerica.nodoHTML.style.backgroundImage =
-    'url(https://www.transparenttextures.com/patterns/crissxcross.png)'
-  cartaGenerica.nodoHTML.classList.remove('disabled')
-}
+  arrayCartas.sort(() => Math.random() - Math.random())
 
-const comprobar = () => {
-  if (carta1.datosCarta.color === carta2.datosCarta.color) {
-    puntuacion++
-    parejasEncontradas++
-    resetearValores()
+  const divApp = document.querySelector('#app')
 
-    if (parejasEncontradas === arrayCartas.length / 2) {
-      mostrarMensajeFinal()
+  const puntuacionHTML = document.createElement('h3')
+  puntuacionHTML.textContent = `Puntuación: ${puntuacion}`
+  document.body.append(puntuacionHTML, divApp)
+
+  const mejorPuntuacionHTML = document.createElement('h4')
+  const mejorPuntuacion = JSON.parse(
+    localStorage.getItem('mejorPuntuacion')
+  ) || { puntuacion: 0, usuario: '' }
+  mejorPuntuacionHTML.textContent = `Mejor puntuación: ${mejorPuntuacion.puntuacion} por ${mejorPuntuacion.usuario}`
+  document.body.append(mejorPuntuacionHTML)
+
+  const mostrarMensajeFinal = () => {
+    if (puntuacion > mejorPuntuacion.puntuacion) {
+      localStorage.setItem(
+        'mejorPuntuacion',
+        JSON.stringify({ puntuacion, usuario })
+      )
+      mejorPuntuacionHTML.textContent = `Mejor puntuación: ${puntuacion} por ${usuario}`
     }
-  } else {
-    puntuacion--
-    setTimeout(() => {
-      resetearCarta(carta1)
-      resetearCarta(carta2)
+
+    const mensajeFinal = document.createElement('div')
+    mensajeFinal.className = 'mensaje-final'
+
+    const mensaje = document.createElement('h2')
+    mensaje.textContent = `¡Juego terminado! Puntuación final: ${puntuacion}`
+
+    const botonReiniciar = document.createElement('button')
+    botonReiniciar.textContent = 'Empezar de nuevo'
+    botonReiniciar.addEventListener('click', () => {
+      window.location.reload()
+    })
+
+    mensajeFinal.append(mensaje, botonReiniciar)
+    document.body.append(mensajeFinal)
+  }
+
+  const resetearValores = () => {
+    contador = 0
+    carta1 = undefined
+    carta2 = undefined
+    console.log(puntuacion)
+  }
+
+  const resetearCarta = (cartaGenerica) => {
+    cartaGenerica.nodoHTML.style.backgroundColor = '#f5b6e4'
+    cartaGenerica.nodoHTML.style.backgroundImage =
+      'url(https://www.transparenttextures.com/patterns/crissxcross.png)'
+    cartaGenerica.nodoHTML.classList.remove('disabled')
+  }
+
+  const comprobar = () => {
+    if (carta1.datosCarta.color === carta2.datosCarta.color) {
+      puntuacion++
+      parejasEncontradas++
       resetearValores()
-    }, 1000)
-  }
-  puntuacionHTML.textContent = `Puntuación: ` + puntuacion
-}
 
-const seleccionar = (divCartaNodoHTML, datosDeCadaCarta) => {
-  if (contador < 2 && !divCartaNodoHTML.classList.contains('disabled')) {
-    contador++
-    console.log('Cartas seleccionadas: ' + contador)
-    divCartaNodoHTML.style.backgroundColor = datosDeCadaCarta.color
-    divCartaNodoHTML.style.backgroundImage = 'none'
-    divCartaNodoHTML.classList.add('disabled')
+      if (parejasEncontradas === arrayCartas.length / 2) {
+        mostrarMensajeFinal()
+      }
+    } else {
+      puntuacion--
+      setTimeout(() => {
+        resetearCarta(carta1)
+        resetearCarta(carta2)
+        resetearValores()
+      }, 1000)
+    }
+    puntuacionHTML.textContent = `Puntuación: ${puntuacion}`
   }
 
-  if (contador === 1) {
-    carta1 = {
-      nodoHTML: divCartaNodoHTML,
-      datosCarta: datosDeCadaCarta
+  const seleccionar = (divCartaNodoHTML, datosDeCadaCarta) => {
+    if (contador < 2 && !divCartaNodoHTML.classList.contains('disabled')) {
+      contador++
+      console.log('Cartas seleccionadas: ' + contador)
+      divCartaNodoHTML.style.backgroundColor = datosDeCadaCarta.color
+      divCartaNodoHTML.style.backgroundImage = 'none'
+      divCartaNodoHTML.classList.add('disabled')
     }
 
-    console.log(carta1)
+    if (contador === 1) {
+      carta1 = {
+        nodoHTML: divCartaNodoHTML,
+        datosCarta: datosDeCadaCarta
+      }
+
+      console.log(carta1)
+    }
+
+    if (contador === 2) {
+      carta2 = {
+        nodoHTML: divCartaNodoHTML,
+        datosCarta: datosDeCadaCarta
+      }
+      console.log(carta2)
+      comprobar()
+    }
   }
 
-  if (contador === 2) {
-    carta2 = {
-      nodoHTML: divCartaNodoHTML,
-      datosCarta: datosDeCadaCarta
-    }
-    console.log(carta2)
-    comprobar()
-  }
+  arrayCartas.forEach((datosDeCadaCarta) => {
+    const divCartaNodoHTML = document.createElement('div')
+    divCartaNodoHTML.className = 'carta'
+
+    divCartaNodoHTML.addEventListener('click', () =>
+      seleccionar(divCartaNodoHTML, datosDeCadaCarta)
+    )
+
+    divApp.append(divCartaNodoHTML)
+  })
 }
 
-arrayCartas.forEach((datosDeCadaCarta) => {
-  const divCartaNodoHTML = document.createElement('div')
-
-  divCartaNodoHTML.className = 'carta'
-
-  divCartaNodoHTML.addEventListener('click', () =>
-    seleccionar(divCartaNodoHTML, datosDeCadaCarta)
-  )
-
-  divApp.append(divCartaNodoHTML)
-})
+if (!localStorage.getItem('usuario')) {
+  pedirNombreDeUsuario()
+} else {
+  iniciarJuego()
+}
