@@ -1,0 +1,35 @@
+.carta {
+  width: 150px;
+  height: 200px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.5s;
+  background-color: var(--secundary-bg-color);
+  background-image: url('https://www.transparenttextures.com/patterns/dark-mosaic.png');
+  border: 1px solid #ccc;
+}
+
+.carta:hover {
+  transform: scale(1.1);
+}
+
+.carta.disabled {
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.mensaje-final {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.mensaje-final h2 {
+  margin-bottom: 10px;
+}
+
+.mensaje-final button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: var(--primary-bg-color);
+}

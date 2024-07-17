@@ -1,0 +1,45 @@
+input[type='text'] {
+  width: 80%;
+  padding: 10px 15px;
+  margin: 20px auto;
+  display: block;
+  border: 2px solid #ddd;
+  border-radius: 25px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+input[type='text']:focus {
+  outline: none;
+  border-color: var(--border-color);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+button {
+  display: block;
+  width: 50%;
+  margin: 10px auto;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 25px;
+  background-color: var(--border-color);
+  color: var(--primary-color);
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+button:hover {
+  background-color: var(--tercer-bg-color);
+  transform: scale(1.05);
+}
+
+button:focus {
+  outline: none;
+}
+
+button:active {
+  background-color: var(--tercer-bg-color);
+}

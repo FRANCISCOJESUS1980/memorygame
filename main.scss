@@ -1,3 +1,14 @@
+@import './public/assets/componentes/utils.scss';
+@import './public/assets/componentes/game.scss';
+
+:root {
+  --primary-color: whitesmoke;
+  --primary-bg-color: #c491b6;
+  --secundary-bg-color: #f5b6e4;
+  --tercer--bg-color: #4a5c66;
+  --border-color: #7b92a4;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -13,21 +24,6 @@
   height: 60svh;
 }
 
-.carta {
-  width: 150px;
-  height: 200px;
-  border-radius: 20px;
-  cursor: pointer;
-  transition: all 0.5s;
-  background-color: #f5b6e4;
-  background-image: url('https://www.transparenttextures.com/patterns/dark-mosaic.png');
-  border: 1px solid #ccc;
-}
-
-.carta:hover {
-  transform: scale(1.1);
-}
-
 h3 {
   font-size: 40px;
   text-align: center;
@@ -35,14 +31,14 @@ h3 {
 header {
   display: flex;
   justify-content: center;
-  background-color: #c491b6;
+  background-color: var(--primary-bg-color);
   height: 150px;
   align-items: center;
   border-radius: 10px;
   margin: 10px 20px;
 }
 header > h1 {
-  color: whitesmoke;
+  color: var(--primary-color);
   font-weight: 900;
   font-size: xx-large;
   max-height: max-content;
@@ -51,32 +47,8 @@ h4 {
   justify-content: center;
   align-items: center;
   display: flex;
-  background-color: #4d0038;
-  color: aqua;
-}
-
-.carta.disabled {
-  cursor: not-allowed;
-  pointer-events: none;
-}
-
-.mensaje-final {
-  text-align: center;
-  margin-top: 20px;
-}
-
-.mensaje-final h2 {
-  margin-bottom: 10px;
-}
-
-.mensaje-final button {
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  background-color: #c491b6;
-}
-.footer {
-  margin-bottom: 0;
+  background-color: var(--primary-bg-color);
+  color: var(--primary-color);
 }
 
 @media screen and (max-width: 760px) {
@@ -85,49 +57,9 @@ h4 {
     height: 120px;
   }
 }
-
-input[type='text'] {
-  width: 80%;
-  padding: 10px 15px;
-  margin: 20px auto;
-  display: block;
-  border: 2px solid #ddd;
-  border-radius: 25px;
-  font-size: 16px;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-input[type='text']:focus {
-  outline: none;
-  border-color: #7b92a4;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-button {
-  display: block;
-  width: 50%;
-  margin: 10px auto;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 25px;
-  background-color: #7b92a4;
-  color: white;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-button:hover {
-  background-color: #5a6d7a;
-  transform: scale(1.05);
-}
-
-button:focus {
-  outline: none;
-}
-
-button:active {
-  background-color: #4a5c66;
+@media screen and (max-width: 420px) {
+  .carta {
+    width: 100px;
+    height: 90px;
+  }
 }
