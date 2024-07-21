@@ -2,13 +2,15 @@ const arrayCartas = [
   { id: 1, color: 'red' },
   { id: 2, color: 'orange' },
   { id: 3, color: 'blue' },
-  { id: 4, color: 'pink' },
-  { id: 5, color: 'black' },
-  { id: 6, color: 'red' },
-  { id: 7, color: 'orange' },
-  { id: 8, color: 'blue' },
-  { id: 9, color: 'pink' },
-  { id: 10, color: 'black' }
+  { id: 4, color: 'violet' },
+  { id: 5, color: 'pink' },
+  { id: 6, color: 'black' },
+  { id: 7, color: 'red' },
+  { id: 8, color: 'orange' },
+  { id: 9, color: 'blue' },
+  { id: 10, color: 'violet' },
+  { id: 11, color: 'pink' },
+  { id: 12, color: 'black' }
 ]
 
 let contador = 0
@@ -90,7 +92,7 @@ export const setupGame = () => {
         resetearCarta(carta1)
         resetearCarta(carta2)
         resetearValores()
-      }, 1000)
+      }, 200)
     }
     puntuacionHTML.textContent = `Puntuación: ${puntuacion}`
   }
