@@ -4,6 +4,7 @@ import {
   iniciarJuego
 } from './public/assets/componentes/utils.js'
 import { setupGame } from './public/assets/componentes/game.js'
+import './public/assets/componentes/btnvolverMenuPrin.js'
 
 if (!localStorage.getItem('usuario')) {
   pedirNombreDeUsuario(iniciarJuego)
