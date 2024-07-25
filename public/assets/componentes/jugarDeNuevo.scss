@@ -1,4 +1,4 @@
-#backToMenuBtn {
+.jugarDeNuevo {
   padding: 0.5rem 1rem;
   border: none;
   border-radius: 10px;
@@ -8,7 +8,6 @@
   transition: background-color 0.3s;
   margin-bottom: 50px;
 }
-
-#backToMenuBtn:hover {
+.jugarDeNuevo:hover {
   background-color: #3a1c71;
 }
