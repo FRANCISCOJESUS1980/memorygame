@@ -1,4 +1,5 @@
 import './main.scss'
+import './public/assets/componentes/jugarDeNuevo.js'
 import {
   pedirNombreDeUsuario,
   iniciarJuego
