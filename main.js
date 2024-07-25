@@ -39,7 +39,6 @@ document.addEventListener('DOMContentLoaded', () => {
     })
     document.removeEventListener('click', startMusic)
   }
-  document.addEventListener('click', startMusic)
 
   playPauseBtn.addEventListener('click', () => {
     if (audio.paused) {
