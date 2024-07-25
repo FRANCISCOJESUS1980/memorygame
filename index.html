@@ -17,7 +17,19 @@
     <div id="app"></div>
 
     <div id="score-container"></div>
+    <div class="music-controls">
+      <button id="playPauseBtn">Play</button>
+      <input
+        type="range"
+        id="volumeControl"
+        min="0"
+        max="1"
+        step="0.1"
+        value="0.5"
+      />
+    </div>
     <button id="play-again" class="jugarDeNuevo">Volver a jugar</button>
+
     <script type="module" src="./main.js"></script>
   </body>
 </html>

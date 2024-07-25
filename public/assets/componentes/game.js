@@ -71,7 +71,7 @@ export const setupGame = () => {
   }
 
   const resetearCarta = (cartaGenerica) => {
-    cartaGenerica.nodoHTML.style.backgroundColor = '#f5b6e4'
+    cartaGenerica.nodoHTML.style.backgroundColor = 'rgb(110, 110, 228)'
     cartaGenerica.nodoHTML.style.backgroundImage =
       'url(https://www.transparenttextures.com/patterns/crissxcross.png)'
     cartaGenerica.nodoHTML.classList.remove('disabled')

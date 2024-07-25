@@ -1,0 +1,30 @@
+.music-controls {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin: 20px;
+}
+.music-controls:hover {
+  padding: 0.8rem 1.3rem;
+}
+#playPauseBtn {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 10px;
+  background-color: rgb(110, 110, 228);
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 200px;
+}
+
+#playPauseBtn:hover {
+  background-color: #3a1c71;
+  //padding: 0.8rem 1.3rem;
+}
+
+#volumeControl {
+  width: 100px;
+}
