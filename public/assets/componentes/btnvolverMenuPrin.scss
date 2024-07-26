@@ -1,14 +1,14 @@
 #backToMenuBtn {
-  padding: 0.5rem 1rem;
+  padding: var(--secundary-padding);
   border: none;
-  border-radius: 10px;
-  background-color: rgb(110, 110, 228);
-  color: white;
+  border-radius: var(--primary-border-radius);
+  background-color: var(--quinto-bg-color);
+  color: var(--cuarto--bg-color);
   cursor: pointer;
   transition: background-color 0.3s;
-  margin-bottom: 50px;
+  margin-bottom: var(--tercer-margin-bottom);
 }
 
 #backToMenuBtn:hover {
-  background-color: #3a1c71;
+  background-color: var(--sexto-bg-color);
 }

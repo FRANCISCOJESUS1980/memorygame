@@ -3,26 +3,25 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 1rem;
-  margin: 20px;
+  gap: var(--secundary-gap);
+  margin: var(--secundary-margin);
 }
 .music-controls:hover {
-  padding: 0.8rem 1.3rem;
+  padding: var(--primary-padding);
 }
 #playPauseBtn {
-  padding: 0.5rem 1rem;
+  padding: var(--secundary-padding);
   border: none;
-  border-radius: 10px;
-  background-color: rgb(110, 110, 228);
-  color: white;
+  border-radius: var(--primary-border-radius);
+  background-color: var(--quinto-bg-color);
+  color: var(--cuarto--bg-color);
   cursor: pointer;
   transition: background-color 0.3s;
   width: 200px;
 }
 
 #playPauseBtn:hover {
-  background-color: #3a1c71;
-  //padding: 0.8rem 1.3rem;
+  background-color: var(--sexto-bg-color);
 }
 
 #volumeControl {

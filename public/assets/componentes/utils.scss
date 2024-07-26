@@ -44,7 +44,7 @@ button:active {
   background-color: var(--tercer-bg-color);
 }
 .instrucciones {
-  margin: 10px 20px;
+  margin: var(--primary-margin);
   font-size: large;
   text-shadow: 1px 1px black;
 }
