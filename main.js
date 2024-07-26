@@ -33,13 +33,6 @@ document.addEventListener('DOMContentLoaded', () => {
     playPauseBtn.textContent = 'Play'
   }
 
-  const startMusic = () => {
-    audio.play().catch((error) => {
-      console.error('Error al reproducir la música:', error)
-    })
-    document.removeEventListener('click', startMusic)
-  }
-
   playPauseBtn.addEventListener('click', () => {
     if (audio.paused) {
       audio.play().catch((error) => {
